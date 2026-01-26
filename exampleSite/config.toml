@@ -1,5 +1,5 @@
 baseURL = "https://hugo-calligraphy.netlify.app/"
-title = "Calligraphy"
+title = "Citizens Initiative"
 copyright = "Copyright © 2021"
 [pagination]
   pagerSize = 6
@@ -15,8 +15,8 @@ enableEmoji = true
   logo = ""
   name = ""
   logoShort = ""
-  nameShort = "Calligraphy"
-  tagline = "Elegant Writing"
+  nameShort = "Citizens Initiative"
+  tagline = "For the People"
 
 [params.meta]
   baseOGImage = "img/screenshot.jpg"

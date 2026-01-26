@@ -1,9 +1,8 @@
-name = "Calligraphy"
+name = "Citizens Initiative"
 license = "MIT"
 licenselink = "https://github.com/pacollins/calligraphy/blob/master/LICENSE"
-description = "Inspired by its namesake, Calligraphy aims to provide an elegantly simple canvas for high readability."
+description = "A Hugo theme for citizen initiatives and advocacy, forked from Calligraphy."
 homepage = "https://github.com/pacollins/calligraphy"
-demosite = "http://hugo-calligraphy.netlify.app/"
 tags = [
   "blog",
   "dark",
