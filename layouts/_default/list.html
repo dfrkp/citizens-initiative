@@ -1,5 +1,5 @@
 {{- define "main" }}
-    {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections) (.Data.Pages) ) }}
+    {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections) .Pages) }}
     {{ $counter := 0 }}
     {{ range $paginator.Pages }}
         <article class="card{{ if eq $counter 0 }} card--featured{{ else if gt $counter 2 }} card--additional{{ end }}{{ if not .Params.feature }} card--coverless{{ end }}">

@@ -13,8 +13,8 @@
         {{ partial "function/content.html" . }}
         <h2>Articles</h2>
         <ul>
-            {{- range .Data.Pages }}
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{- range .Pages }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
             {{- end }}
         </ul>
     </div>

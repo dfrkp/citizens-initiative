@@ -1,7 +1,8 @@
 baseURL = "https://hugo-calligraphy.netlify.app/"
 title = "Calligraphy"
 copyright = "Copyright © 2021"
-paginate = 6
+[pagination]
+  pagerSize = 6
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
@@ -32,9 +33,8 @@ enableEmoji = true
     width-content-min = ""
 
     ## Type ##
-    color_red = "blue"
-    font_header = "'Playfair Display', serif"
-    font_body = "'Source Sans 3', sans-serif"
+    font_header = "'Zain', sans-serif"
+    font_body = "'Zain', sans-serif"
 
     ## Transitions ##
     transition_base = "0.3s ease-in-out"
@@ -44,38 +44,38 @@ enableEmoji = true
     border_radius-large = "10px"
 
     ## Global Colors ##
-    color_secondary = "blue"
-    color_button = "green"
-    color_text_light = "hsl(0, 0%, 91%)"
-    color_text_dark = "hsl(0, 0%, 15%)"
+    color_secondary = "#1e3a5f"
+    color_button = "#97cc00"
+    color_text_light = "#f1fcf4"
+    color_text_dark = "#1e3a5f"
 
     ## Light Mode Colors ##
-    color_primary = "hsl(180, 100%, 35%)"
-    color_primary_tint = "hsl(174, 60%, 85%)"
-    color_primary_shade = "hsl(180, 100%, 15%)"
-    color_canvas = "hsl(0, 0%, 93%)"
-    color_canvas_tint = "hsl(0, 0%, 98%)"
-    color_canvas_shade = "hsl(217, 15%, 17%)"
-    color_text = "hsl(0, 0%, 15%)"
-    color_text_muted = "hsl(0, 0%, 45%)"
-    color_text_inverted = "hsl(0, 0%, 91%)"
-    color_text_link = "hsl(174, 60%, 42%)"
-    color_ui_float = "hsl(0, 0%, 86%)"
-    border_color = "hsl(220, 16%, 36%)"
+    color_primary = "#97cc00"
+    color_primary_tint = "#d4f0a0"
+    color_primary_shade = "#5a7a00"
+    color_canvas = "#f8faf5"
+    color_canvas_tint = "#ffffff"
+    color_canvas_shade = "#1e3a5f"
+    color_text = "#1e3a5f"
+    color_text_muted = "#4a6a8f"
+    color_text_inverted = "#f1fcf4"
+    color_text_link = "#7ab000"
+    color_ui_float = "#e8f0e0"
+    border_color = "#1e3a5f"
     image_filter = "none"
 
     ## Dark Mode Colors ##
-    dark_color_primary = "hsl(180, 100%, 35%)"
-    dark_color_canvas = "hsl(219, 16%, 17%)"
-    dark_color_canvas-tint = "hsl(218, 17%, 26%)"
-    dark_color_canvas_shade = "hsl(218, 18%, 9%)"
-    dark_color_text = "hsl(0, 0%, 91%)"
-    dark_color_text_muted = "hsl(0, 0%, 77%)"
-    dark_color_text_inverted = "hsl(0, 0%, 15%)"
-    dark_color_text_link = "hsl(174, 60%, 55%)"
-    dark_color_ui_float = "hsl(220, 16%, 33%)"
-    dark_border_color = "hsl(219, 28%, 88%)"
-    dark_image_filter = "grayscale(35%)"
+    dark_color_primary = "#97cc00"
+    dark_color_canvas = "#1e3a5f"
+    dark_color_canvas-tint = "#2a4a6f"
+    dark_color_canvas_shade = "#0f1f30"
+    dark_color_text = "#f1fcf4"
+    dark_color_text_muted = "#b0d0c0"
+    dark_color_text_inverted = "#1e3a5f"
+    dark_color_text_link = "#b0e040"
+    dark_color_ui_float = "#2a4a6f"
+    dark_border_color = "#f1fcf4"
+    dark_image_filter = "none"
 
 [[menu.main]]
   identifier = "home"
@@ -141,7 +141,7 @@ enableEmoji = true
   extended = true
   min = "0.111.3"
 
-[privacy.twitter]
+[privacy.x]
   enableDNT = true
 
 [privacy.vimeo]

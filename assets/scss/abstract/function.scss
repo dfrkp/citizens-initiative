@@ -1,5 +1,8 @@
+@use "sass:math";
+@use "sass:string";
+
 @function rem($pixels, $context: 16px) {
-    @return #{$pixels / $context}rem;
+    @return #{math.div($pixels, $context)}rem;
 }
 
 @function typeScale($steps, $direction: "up", $units: "rem", $type-scale: 1.33) {
@@ -10,7 +13,7 @@
             @if $direction == "up" {
                 $font-size: $font-size * $type-scale;
             } @else if $direction == "down" {
-                $font-size: $font-size / $type-scale;
+                $font-size: math.div($font-size, $type-scale);
             } @else {
                 @error "Incorrect scaling direction.";
             }
@@ -29,5 +32,5 @@
         $font-size: $font-size * -1;
     }
 
-    @return unquote($font-size + $units);
+    @return string.unquote($font-size + $units);
 }
