@@ -1,5 +1,7 @@
 # Citizens Initiative
 
+[**Live Demo**](https://citizens-initiative.surge.sh/)
+
 A Hugo theme for citizen initiatives and advocacy, forked from [Calligraphy](https://github.com/pacollins/calligraphy).
 
 ## Features

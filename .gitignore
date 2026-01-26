@@ -1,0 +1,10 @@
+# Hugo build output
+exampleSite/public/
+exampleSite/resources/
+
+# OS files
+.DS_Store
+
+# Editor files
+*.swp
+*~

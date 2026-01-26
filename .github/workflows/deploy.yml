@@ -1,0 +1,37 @@
+name: Deploy Demo to Surge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.145.0'
+          extended: true
+
+      - name: Setup Dart Sass
+        run: sudo snap install dart-sass
+
+      - name: Build
+        run: |
+          export PATH="/snap/bin:$PATH"
+          hugo --gc --minify --source exampleSite --themesDir "$GITHUB_WORKSPACE/.." --baseURL "https://citizens-initiative.surge.sh/"
+        env:
+          HUGO_THEME: citizens-initiative
+
+      - name: Deploy to Surge
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: 'citizens-initiative.surge.sh'
+          project: './exampleSite/public'
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
