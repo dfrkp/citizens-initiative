@@ -1,5 +1,5 @@
 +++
-authors = ["Calligraphy Authors"]
+authors = ["Theme Authors"]
 title = "Theme Installation"
 subtitle = ""
 description = ""
@@ -24,7 +24,7 @@ There are two different methods to install the theme depending on how you plan o
 Navigate to the root directory of your site and do the following:
 
 ```shell
-git clone https://github.com/pacollins/calligraphy.git themes/calligraphy
+git clone https://github.com/dfrkp/citizens-initiative.git themes/citizens-initiative
 ```
 
 ### 2. Submodule
@@ -34,11 +34,11 @@ git clone https://github.com/pacollins/calligraphy.git themes/calligraphy
 Navigate to the root directory of your site and do the following:
 
 ```shell
-git submodule add https://github.com/pacollins/calligraphy.git themes/calligraphy
+git submodule add https://github.com/dfrkp/citizens-initiative.git themes/citizens-initiative
 git submodule update --init --recursive
 ```
 
-You should now be able to navigate to `themes/calligraphy` and see all of the theme files.
+You should now be able to navigate to `themes/citizens-initiative` and see all of the theme files.
 
 To update your site to the current version of the theme, navigate to the root directory and do the following:
 
@@ -54,7 +54,7 @@ For example, if you wanted to change the template for the header (`<my-project>/
 
 ## `exampleSite`
 
-Within the `calligraphy` folder, you will find another folder called `exampleSite` This folder is what is used to build the [demo](https://hugo-calligraphy.netlify.app/) and should provide you with an example of how to structure your site files.
+Within the `citizens-initiative` folder, you will find another folder called `exampleSite` This folder is what is used to build the [demo](https://citizens-initiative.netlify.app/) and should provide you with an example of how to structure your site files.
 
 ## Hugo's Built-In Server
 
@@ -70,13 +70,13 @@ Hugo will build your site and host a server locally. You can view this live at
 ## Sample `config.toml`
 
 ```toml
-baseURL = "https://hugo-calligraphy.netlify.app/"
-title = "Calligraphy"
+baseURL = "https://citizens-initiative.netlify.app/"
+title = "Citizens Initiative"
 copyright = "Copyright © 2021"
 paginate = 3
 languageCode = "en"
 DefaultContentLanguage = "en"
-theme = "calligraphy"
+theme = "citizens-initiative"
 enableInlineShortcodes = true
 enableEmoji = true
 
@@ -218,16 +218,14 @@ Propoetides **parte**.
 
 ```markdown
 +++
-title = "Calligraphy Authors"
+title = "Theme Authors"
 photo = "calligraphy-authors.jpg"
 assignment = "Editor in Chief"
 +++
 
-A theme for beautiful content creation.
+A theme for citizen advocacy and community organizing.
 
-Calligraphy is a theme by [Patrick A Collins](https://pacollins.com/) for [Hugo](https://gohugo.io/) static site generator. Inspired by its namesake, the theme aims to
-provide a simple canvas that is elegant and ensures high readability for all
-visitors.
+Citizens Initiative is a Hugo theme forked from [Calligraphy](https://github.com/pacollins/calligraphy) by [Patrick A Collins](https://pacollins.com/).
 ```
 
 ## Sample `series.md`

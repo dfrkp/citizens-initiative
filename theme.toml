@@ -1,8 +1,8 @@
 name = "Citizens Initiative"
 license = "MIT"
-licenselink = "https://github.com/pacollins/calligraphy/blob/master/LICENSE"
-description = "A Hugo theme for citizen initiatives and advocacy, forked from Calligraphy."
-homepage = "https://github.com/pacollins/calligraphy"
+licenselink = "https://github.com/dfrkp/citizens-initiative/blob/main/LICENSE"
+description = "A Hugo theme for citizen initiatives and advocacy."
+homepage = "https://github.com/dfrkp/citizens-initiative"
 tags = [
   "blog",
   "dark",

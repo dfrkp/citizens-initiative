@@ -1,4 +1,4 @@
-baseURL = "https://hugo-calligraphy.netlify.app/"
+baseURL = "https://citizens-initiative.netlify.app/"
 title = "Citizens Initiative"
 copyright = "Copyright © 2021"
 [pagination]

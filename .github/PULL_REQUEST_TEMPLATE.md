@@ -1,6 +1,6 @@
 <!--
   ## READ BEFORE OPENING PULL REQUESTS
-  - Thank you for contributing to Calligraphy!
+  - Thank you for contributing to Citizens Initiative!
   - Please fill the template below so we can better process the request.
 -->
 ## Description

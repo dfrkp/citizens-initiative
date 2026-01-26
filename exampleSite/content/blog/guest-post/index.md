@@ -1,5 +1,5 @@
 +++
-authors = ["Calligraphy Authors", "Hugo Authors"]
+authors = ["Theme Authors", "Hugo Authors"]
 title = "Guest Post"
 subtitle = ""
 description = ""

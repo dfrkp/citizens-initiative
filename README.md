@@ -14,13 +14,13 @@ A Hugo theme for citizen initiatives and advocacy, forked from [Calligraphy](htt
 ### Clone Repository
 
 ```shell
-git clone https://github.com/yourusername/citizens-initiative.git themes/citizens-initiative
+git clone https://github.com/dfrkp/citizens-initiative.git themes/citizens-initiative
 ```
 
 ### Submodule
 
 ```shell
-git submodule add https://github.com/yourusername/citizens-initiative.git themes/citizens-initiative
+git submodule add https://github.com/dfrkp/citizens-initiative.git themes/citizens-initiative
 git submodule update --init --recursive
 ```
 

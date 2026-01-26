@@ -10,7 +10,7 @@ assignees: ''
 <!--
   ## READ BEFORE OPENING ISSUES
   - Please fill the template below
-  - Use the Discussions section to ask for assistance: https://github.com/pacollins/calligraphy/discussions
+  - Use the Discussions section to ask for assistance: https://github.com/dfrkp/citizens-initiative/discussions
   - Search for previous issues/ pull requests
 -->
 

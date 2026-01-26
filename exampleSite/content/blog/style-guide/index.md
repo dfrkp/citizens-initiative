@@ -1,5 +1,5 @@
 +++
-authors = ["Calligraphy Authors", "Hugo Authors"]
+authors = ["Theme Authors", "Hugo Authors"]
 title = "Style Guide"
 subtitle = ""
 description = ""
@@ -9,7 +9,7 @@ featureCaption = "Photo of an Inkwell by Angela Roma from Pexels"
 series = "Theme Guides"
 +++
 
-This article showcases what Markdown syntax can be utilized in Hugo content files, as well as what the output will look like with the Calligraphy theme.
+This article showcases what Markdown syntax can be utilized in Hugo content files, as well as what the output will look like with the Citizens Initiative theme.
 
 <!--more-->
 
