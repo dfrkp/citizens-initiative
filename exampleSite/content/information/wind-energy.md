@@ -2,6 +2,8 @@
 title = "Wind Energy"
 subtitle = "Clean power from the wind"
 description = "How wind energy works and its role in our region's energy future."
+feature = "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80"
+featureAlt = "Wind turbines against a blue sky"
 +++
 
 Wind energy is a key component of Germany's renewable energy strategy and plays an important role in our regional energy mix.

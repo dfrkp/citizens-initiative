@@ -5,6 +5,8 @@ eventDate = 2026-03-22
 time = "09:00 - 15:00"
 location = "Meeting point: Town Hall parking lot"
 description = "A guided tour of a modern wind farm to see renewable energy in action."
+feature = "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80"
+featureAlt = "Wind turbines on a hillside"
 +++
 
 Experience wind energy up close! We're organizing a day trip to the Nordheide Wind Farm, one of the largest in our region.

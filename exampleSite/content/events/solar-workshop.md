@@ -5,6 +5,8 @@ eventDate = 2026-02-15
 time = "14:00 - 17:00"
 location = "Community Center, Room 3"
 description = "A hands-on workshop covering the basics of residential solar panel systems."
+feature = "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80"
+featureAlt = "Solar panels on a residential roof"
 +++
 
 Join us for an informative afternoon where you'll learn everything you need to know about installing solar panels on your home.

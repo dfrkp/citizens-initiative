@@ -2,6 +2,8 @@
 title = "Solar Energy"
 subtitle = "Harnessing the power of the sun"
 description = "Learn about solar energy potential in Musterstadt and how you can benefit."
+feature = "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80"
+featureAlt = "Solar panel field at sunset"
 +++
 
 Solar energy is one of the most accessible forms of renewable energy for homeowners and businesses in our region.

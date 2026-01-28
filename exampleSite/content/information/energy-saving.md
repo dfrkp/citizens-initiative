@@ -2,6 +2,8 @@
 title = "Energy Saving Tips"
 subtitle = "The cleanest energy is the energy we don't use"
 description = "Practical tips for reducing your energy consumption at home and work."
+feature = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+featureAlt = "LED light bulb representing energy efficiency"
 +++
 
 Before generating renewable energy, it makes sense to reduce the energy we need in the first place. Here are practical tips that can significantly lower your energy bills and carbon footprint.

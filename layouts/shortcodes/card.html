@@ -1,10 +1,17 @@
 {{- $title := .Get "title" }}
 {{- $link := .Get "link" }}
-{{- $linkText := .Get "linkText" | default "Learn more" }}
+{{- $linkText := .Get "linkText" | default (i18n "learn_more") }}
 {{- $icon := .Get "icon" }}
+{{- $image := .Get "image" }}
+{{- $imageAlt := .Get "imageAlt" | default $title }}
 {{- $class := .Get "class" | default "" }}
 
 <article class="card card--static {{ $class }}">
+    {{- with $image }}
+    <figure class="card__cover">
+        <img src="{{ . }}" alt="{{ $imageAlt }}">
+    </figure>
+    {{- end }}
     <div class="card__content card__content--static">
         {{- with $icon }}
         <div class="card__icon">{{ . | safeHTML }}</div>
@@ -13,7 +20,7 @@
         <h3 class="card__title">{{ . }}</h3>
         {{- end }}
         <div class="card__description">
-            {{ .Inner | markdownify }}
+            {{ $.Inner | markdownify }}
         </div>
         {{- with $link }}
         <a href="{{ . }}" class="card__link">{{ $linkText }} &rarr;</a>

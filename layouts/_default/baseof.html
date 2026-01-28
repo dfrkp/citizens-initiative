@@ -42,17 +42,30 @@
   <meta name="og:site_name" content="{{ .Site.Title }}">
   <meta name="og:url" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
-  {{- $image := .Params.feature }}
-  {{- if $image }}
-    {{- $image = .Resources.GetMatch $image }}
-  {{- else }}
-    {{- $image = site.Params.meta.baseOGImage }}
-    {{- $image = resources.GetMatch $image }}
+  {{- $imageUrl := "" }}
+  {{- $tweetImageUrl := "" }}
+  {{- if .Params.feature }}
+    {{- if in .Params.feature "http" }}
+      {{- $imageUrl = .Params.feature }}
+      {{- $tweetImageUrl = .Params.feature }}
+    {{- else }}
+      {{- with .Resources.GetMatch .Params.feature }}
+        {{- $image := .Fit "1200x630" }}
+        {{- $tweetImage := .Fit "1024x512" }}
+        {{- $imageUrl = $image.Permalink }}
+        {{- $tweetImageUrl = $tweetImage.Permalink }}
+      {{- end }}
+    {{- end }}
+  {{- else if site.Params.meta.baseOGImage }}
+    {{- with resources.GetMatch site.Params.meta.baseOGImage }}
+      {{- $image := .Fit "1200x630" }}
+      {{- $tweetImage := .Fit "1024x512" }}
+      {{- $imageUrl = $image.Permalink }}
+      {{- $tweetImageUrl = $tweetImage.Permalink }}
+    {{- end }}
   {{- end }}
-  {{- $image = $image.Fit "1200x630" }}
-  {{- $imageTweet := $image.Fit "1024x512" }}
-  <meta name="og:image" content="{{ $image.Permalink }}">
-  <meta name="twitter:image" content="{{ $imageTweet.Permalink }}">
+  {{- with $imageUrl }}<meta name="og:image" content="{{ . }}">{{- end }}
+  {{- with $tweetImageUrl }}<meta name="twitter:image" content="{{ . }}">{{- end }}
   {{ with .Site.Params.Twitter }}<meta name="twitter:site" content="{{ . }}">{{ end }}
 	{{ block "head" . }}{{ partialCached "site/head-additions.html" . }}{{ end }}
 </head>
