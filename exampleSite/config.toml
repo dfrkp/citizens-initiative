@@ -1,10 +1,22 @@
 baseURL = "https://citizens-initiative.netlify.app/"
+theme = "citizens-initiative"
 title = "Renewable Energy Initiative Musterstadt"
 copyright = "© 2024 Renewable Energy Initiative Musterstadt"
 [pagination]
   pagerSize = 6
-languageCode = "en"
-DefaultContentLanguage = "en"
+# Language setting: change to "de" for German
+defaultContentLanguage = "en"
+
+[languages.en]
+  languageCode = "en"
+  languageName = "English"
+  weight = 1
+
+# Uncomment below and comment out [languages.en] above to use German:
+# [languages.de]
+#   languageCode = "de"
+#   languageName = "Deutsch"
+#   weight = 1
 enableInlineShortcodes = true
 enableEmoji = true
 

@@ -1,0 +1,32 @@
+# Navigation
+[next_post]
+other = "Nächster Beitrag"
+
+[previous_post]
+other = "Vorheriger Beitrag"
+
+[first]
+other = "Erste"
+
+[last]
+other = "Letzte"
+
+[next]
+other = "Weiter"
+
+[previous]
+other = "Zurück"
+
+[page]
+other = "Seite"
+
+# Cards / Links
+[learn_more]
+other = "Mehr erfahren"
+
+# Dates
+[posted_on]
+other = "Veröffentlicht am"
+
+[by]
+other = "von"

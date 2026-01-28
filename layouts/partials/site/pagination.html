@@ -5,7 +5,7 @@
       {{- if .NextInSection }}
       <li class="pagination__button pagination__button--left">
         <a href="{{ .NextInSection.RelPermalink }}" class="pagination__title">
-          <span class="pagination__label pagination__label--previous">Next Post</span>
+          <span class="pagination__label pagination__label--previous">{{ i18n "next_post" }}</span>
           {{ .NextInSection.Title }}
         </a>
       </li>
@@ -13,7 +13,7 @@
       {{ if .PrevInSection }}
       <li class="pagination__button pagination__button--right">
         <a href="{{ .PrevInSection.RelPermalink }}" class="pagination__title">
-          <span class="pagination__label pagination__label--next">Previous Post</span>
+          <span class="pagination__label pagination__label--next">{{ i18n "previous_post" }}</span>
           {{ .PrevInSection.Title }}
         </a>
       </li>
@@ -25,14 +25,14 @@
       {{- with .First }}
         {{- if ne $currentPageNumber .PageNumber }}
         <li class="pagination__button">
-          <a href="{{ .URL }}" class="pagination__title pagination__title--first" aria-label="First"></a>
+          <a href="{{ .URL }}" class="pagination__title pagination__title--first" aria-label="{{ i18n "first" }}"></a>
         </li>
         {{- end }}
       {{- end }}
 
       {{- with .Prev }}
       <li class="pagination__button">
-        <a href="{{ .URL }}" class="pagination__title pagination__title--previous" aria-label="Previous"></a>
+        <a href="{{ .URL }}" class="pagination__title pagination__title--previous" aria-label="{{ i18n "previous" }}"></a>
       </li>
       {{- end }}
 
@@ -46,25 +46,25 @@
       {{- range $k := seq $start $end }}
         {{- if eq $.Paginator.PageNumber $k }}
         <li class="pagination__button pagination__button--active">
-          <a aria-current="page" class="pagination__title" aria-label="Page {{ $k }}">{{ $k }}</a>
+          <a aria-current="page" class="pagination__title" aria-label="{{ i18n "page" }} {{ $k }}">{{ $k }}</a>
         </li>
         {{- else }}
         <li class="pagination__button">
-          <a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" class="pagination__title" aria-label="Page {{ $k }}">{{ $k }}</a>
+          <a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" class="pagination__title" aria-label="{{ i18n "page" }} {{ $k }}">{{ $k }}</a>
         </li>
         {{- end }}
       {{- end }}
 
       {{- with .Next }}
       <li class="pagination__button">
-        <a href="{{ .URL }}" class="pagination__title pagination__title--next" aria-label="Next"></a>
+        <a href="{{ .URL }}" class="pagination__title pagination__title--next" aria-label="{{ i18n "next" }}"></a>
       </li>
       {{- end }}
 
       {{- with .Last }}
         {{- if ne $currentPageNumber .PageNumber }}
         <li class="pagination__button">
-          <a href="{{ .URL }}" class="pagination__title  pagination__title--last" aria-label="Last"></a>
+          <a href="{{ .URL }}" class="pagination__title  pagination__title--last" aria-label="{{ i18n "last" }}"></a>
         </li>
         {{- end }}
       {{- end }}
