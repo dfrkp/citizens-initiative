@@ -70,9 +70,20 @@
             }
         }
 
-        img {
-            width: 100%;
-            min-height: 100px;
+        .brand__logo {
+            width: auto;
+            height: auto;
+            max-height: 8rem;
+            max-width: 100%;
+            object-fit: contain;
+
+            @media screen and (max-width: 50rem) {
+                max-height: 2.5rem;
+            }
+
+            &--short {
+                max-height: 2rem;
+            }
         }
     }
 
@@ -203,6 +214,10 @@
 
                 p {
                     display: none;
+                }
+
+                .brand__logo {
+                    max-height: 2.5rem;
                 }
             }
 

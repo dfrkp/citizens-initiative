@@ -15,7 +15,9 @@
           {{/*  <span class="banner__banner banner__name--long">{{ .Site.Params.brand.name | default .Site.Title }}</span>  */}}
           <span class="banner__name banner__name--short">
             {{- if .Site.Params.brand.logoShort }}
-            <img src="{{ .Site.Params.brand.logoShort }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo">
+            <img src="{{ .Site.Params.brand.logoShort }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short">
+            {{- else if .Site.Params.brand.logo }}
+            <img src="{{ .Site.Params.brand.logo }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short">
             {{- else if .Site.Params.brand.nameShort }}
             {{ .Site.Params.brand.nameShort | default .Site.Title }}
             {{- else }}
