@@ -251,4 +251,21 @@
             margin-top: 0;
         }
     }
+
+    &--hero {
+        grid-column: span 12;
+
+        #{$block}__content--hero {
+            margin-top: 0;
+            text-align: center;
+
+            > *:first-child {
+                margin-top: 0;
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
 }

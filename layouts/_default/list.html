@@ -1,4 +1,11 @@
 {{- define "main" }}
+    {{- if and .IsHome .Content }}
+    <section class="card card--hero">
+        <div class="card__content card__content--hero">
+            {{ .Content }}
+        </div>
+    </section>
+    {{- end }}
     {{ $paginator := .Paginate (cond .IsHome (where site.RegularPages "Type" "in" site.Params.mainSections) .Pages) }}
     {{ $counter := 0 }}
     {{ range $paginator.Pages }}
