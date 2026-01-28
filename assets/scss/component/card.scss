@@ -118,9 +118,14 @@
     &__content {
         position: relative;
         flex-grow: 1;
-        margin: typeScale(-6, up, em) typeScale(1, up, em) 0;
-        padding: typeScale(2, up, em) clamp(#{typeScale(1, up, em)}, 5vw, #{typeScale(4, up, em)});
+        margin: typeScale(-6, up, em) 0 0;
+        padding: typeScale(2, up, em) typeScale(1, up, em);
         background-color: var(--color-canvas-tint);
+
+        @media screen and (min-width: 54rem) {
+            margin: typeScale(-6, up, em) typeScale(1, up, em) 0;
+            padding: typeScale(2, up, em) clamp(#{typeScale(1, up, em)}, 5vw, #{typeScale(4, up, em)});
+        }
     }
 
     &__header {
