@@ -1,0 +1,24 @@
+{{- define "main" }}
+<article class="card card--page{{ if not .Params.feature }} card--coverless{{ end }}">
+    {{- if .Params.feature }}
+    {{ .Scratch.Set "processing" "resize" }}
+    {{ .Scratch.Set "size" "x1300" }}
+    {{ $cover := partialCached "function/resize-image" . .Page "single" }}
+    <figure class="card__cover">
+        <img src="{{ $cover }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}">
+    </figure>
+    {{- end }}
+  <div class="card__content">
+    <div class="card__header">
+        <h1 class="card__title">{{ .Title }}</h1>
+        {{ with .Params.subtitle }}<span class="card__subtitle">{{ . }}</span>{{ end }}
+    </div>
+    <hr>
+    {{ partial "function/content.html" . }}
+  </div>
+</article>
+{{- end }}
+
+{{- define "pagination" }}
+  {{ partial "site/pagination" . }}
+{{- end }}

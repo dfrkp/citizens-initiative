@@ -1,0 +1,24 @@
+{{- $name := .Get "name" }}
+{{- $role := .Get "role" }}
+{{- $image := .Get "image" }}
+
+<article class="card card--static card--person">
+    {{- with $image }}
+    <figure class="card__cover">
+        <img src="{{ . }}" alt="{{ $name }}">
+    </figure>
+    {{- end }}
+    <div class="card__content card__content--static">
+        {{- with $name }}
+        <h3 class="card__title">{{ . }}</h3>
+        {{- end }}
+        {{- with $role }}
+        <span class="card__subtitle">{{ . }}</span>
+        {{- end }}
+        {{- with $.Inner }}
+        <div class="card__description">
+            {{ . | markdownify }}
+        </div>
+        {{- end }}
+    </div>
+</article>

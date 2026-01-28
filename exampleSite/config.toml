@@ -1,6 +1,6 @@
 baseURL = "https://citizens-initiative.netlify.app/"
-title = "Citizens Initiative"
-copyright = "Copyright © 2021"
+title = "Renewable Energy Initiative Musterstadt"
+copyright = "© 2024 Renewable Energy Initiative Musterstadt"
 [pagination]
   pagerSize = 6
 languageCode = "en"
@@ -10,28 +10,24 @@ enableEmoji = true
 
 [params]
   cdn = false
+  mainSections = ["events", "information"]
 
 [params.brand]
   logo = ""
-  name = ""
+  name = "Renewable Energy Initiative"
   logoShort = ""
-  nameShort = "Citizens Initiative"
-  tagline = "For the People"
+  nameShort = "REI"
+  tagline = "Together for a Sustainable Future"
 
 [params.meta]
   baseOGImage = "img/screenshot.jpg"
-  faviconComplete = true
-  faviconSVG = true
+  faviconComplete = false
+  faviconSVG = false
   faviconVersion = ""
-  faviconMSColor = "#00aba9"
-  faviconiOSColor = "#00aba9"
+  faviconMSColor = "#97cc00"
+  faviconiOSColor = "#97cc00"
 
 [params.style]
-    ## Width ##
-    width_site = ""
-    width_content = ""
-    width-content-min = ""
-
     ## Type ##
     font_header = "'Zain', sans-serif"
     font_body = "'Zain', sans-serif"
@@ -79,7 +75,7 @@ enableEmoji = true
 
 [[menu.main]]
   identifier = "home"
-  name = "Home"
+  name = "Start"
   url = "/"
   weight = 10
 
@@ -90,16 +86,16 @@ enableEmoji = true
   weight = 20
 
 [[menu.main]]
-  identifier = "series"
-  name = "Series"
-  url = "/series/"
-  weight = 40
+  identifier = "events"
+  name = "Events"
+  url = "/events/"
+  weight = 30
 
 [[menu.main]]
-  identifier = "contact"
-  name = "Contact"
-  url = "/contact/"
-  weight = 50
+  identifier = "information"
+  name = "Information"
+  url = "/information/"
+  weight = 40
 
 [[menu.footer]]
   identifier = "imprint"
@@ -121,10 +117,6 @@ enableEmoji = true
 [outputs]
   home = ["html", "rss"]
 
-[taxonomies]
-  author = "authors"
-  series = "series"
-
 [markup.goldmark.renderer]
   unsafe = true
 
@@ -132,26 +124,26 @@ enableEmoji = true
   block = true
 
 [markup.goldmark.extensions]
-    strikethrough = true
+  strikethrough = true
 
 [markup.goldmark.extensions.extras.delete]
-    enable = true
-          
+  enable = true
+
 [markup.goldmark.extensions.extras.insert]
-    enable = true
+  enable = true
 
 [markup.goldmark.extensions.extras.mark]
-    enable = true
+  enable = true
 
 [markup.goldmark.extensions.extras.subscript]
-    enable = true
+  enable = true
 
 [markup.goldmark.extensions.extras.superscript]
-    enable = true
+  enable = true
 
 [module.hugoVersion]
   extended = true
-  min = "0.111.3"
+  min = "0.145.0"
 
 [privacy.x]
   enableDNT = true

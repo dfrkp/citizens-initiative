@@ -268,4 +268,66 @@
             }
         }
     }
+
+    &--static {
+        #{$block}__content--static {
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #{$block}__icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        #{$block}__title {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        #{$block}__description {
+            flex-grow: 1;
+
+            > *:first-child {
+                margin-top: 0;
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        #{$block}__link {
+            display: block;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+    }
+
+    &--person {
+        #{$block}__content {
+            margin-top: 0;
+        }
+
+        #{$block}__cover {
+            img {
+                height: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                aspect-ratio: 1;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        #{$block}__title {
+            margin-top: 1rem;
+        }
+    }
 }

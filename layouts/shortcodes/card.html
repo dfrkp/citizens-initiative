@@ -1,0 +1,22 @@
+{{- $title := .Get "title" }}
+{{- $link := .Get "link" }}
+{{- $linkText := .Get "linkText" | default "Learn more" }}
+{{- $icon := .Get "icon" }}
+{{- $class := .Get "class" | default "" }}
+
+<article class="card card--static {{ $class }}">
+    <div class="card__content card__content--static">
+        {{- with $icon }}
+        <div class="card__icon">{{ . | safeHTML }}</div>
+        {{- end }}
+        {{- with $title }}
+        <h3 class="card__title">{{ . }}</h3>
+        {{- end }}
+        <div class="card__description">
+            {{ .Inner | markdownify }}
+        </div>
+        {{- with $link }}
+        <a href="{{ . }}" class="card__link">{{ $linkText }} &rarr;</a>
+        {{- end }}
+    </div>
+</article>

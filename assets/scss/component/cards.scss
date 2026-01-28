@@ -1,0 +1,43 @@
+@use "../abstract" as *;
+
+.cards {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+
+    &--2-col {
+        grid-template-columns: 1fr;
+
+        @include break(40rem) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &--3-col {
+        grid-template-columns: 1fr;
+
+        @include break(40rem) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include break(60rem) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &--4-col {
+        grid-template-columns: 1fr;
+
+        @include break(30rem) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include break(50rem) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include break(70rem) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{{- define "main" }}
+    {{- if .Content }}
+    <section class="card card--hero">
+        <div class="card__content card__content--hero">
+            {{ .Content }}
+        </div>
+    </section>
+    {{- end }}
+    {{ $paginator := .Paginate .Pages.ByTitle }}
+    {{ range $paginator.Pages }}
+        <article class="card{{ if not .Params.feature }} card--coverless{{ end }}">
+            {{- if .Params.feature }}
+                {{ .Scratch.Set "processing" "resize" }}
+                {{ .Scratch.Set "size" "x1000" }}
+                {{ $thumbnail := partialCached "function/resize-image" . .Page }}
+                <figure class="card__cover">
+                    <a href="{{ .RelPermalink }}"><img src="{{ $thumbnail }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}"></a>
+                </figure>
+            {{- end }}
+            <div class="card__content">
+                <div class="card__header">
+                    <h2 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    {{ with .Params.subtitle }} <span class="card__subtitle">{{ . }}</span>{{ end }}
+                </div>
+                <div class="card__description">{{ .Params.description | default (.Summary | truncate 200 "...") }}</div>
+            </div>
+        </article>
+    {{- end }}
+{{- end }}
+
+{{- define "pagination" }}
+    {{ partial "site/pagination" . }}
+{{- end }}
