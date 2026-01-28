@@ -7,7 +7,8 @@
         <a href="/" title="{{ .Site.Params.brand.title }} Home">
           <span class="banner__name banner__name--long">
             {{- with .Site.Params.brand.logo }}
-            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--light">
+            {{- $hasDark := $.Site.Params.brand.logoDark }}
+            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo{{ if $hasDark }} brand__logo--light{{ end }}">
             {{- with $.Site.Params.brand.logoDark }}
             <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--dark">
             {{- end }}
@@ -19,10 +20,11 @@
             {{- $logo := .Site.Params.brand.logo }}
             {{- $logoShort := .Site.Params.brand.logoShort | default $logo }}
             {{- $logoDark := .Site.Params.brand.logoDark }}
-            {{- $logoShortDark := .Site.Params.brand.logoShortDark | default $logoDark | default $logoShort }}
+            {{- $logoShortDark := .Site.Params.brand.logoShortDark | default $logoDark }}
+            {{- $hasDarkShort := and $logoShortDark (ne $logoShortDark $logoShort) }}
             {{- if $logoShort }}
-            <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--light">
-            {{- if and $logoShortDark (ne $logoShortDark $logoShort) }}
+            <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short{{ if $hasDarkShort }} brand__logo--light{{ end }}">
+            {{- if $hasDarkShort }}
             <img src="{{ $logoShortDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark">
             {{- end }}
             {{- else if .Site.Params.brand.nameShort }}
