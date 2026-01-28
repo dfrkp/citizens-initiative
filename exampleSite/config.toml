@@ -101,6 +101,18 @@ enableEmoji = true
   url = "/contact/"
   weight = 50
 
+[[menu.footer]]
+  identifier = "imprint"
+  name = "Imprint"
+  url = "/imprint/"
+  weight = 10
+
+[[menu.footer]]
+  identifier = "privacy"
+  name = "Privacy"
+  url = "/privacy/"
+  weight = 20
+
 ################################################################################
 ######       The block below has additional configuration settings.        #####
 ######         Users can edit, but for most it won't be necessary.         #####

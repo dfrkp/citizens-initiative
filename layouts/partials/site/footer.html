@@ -1,8 +1,16 @@
 <footer id="site-footer" class="footer">
   <div class="site__container">
     <div class="footer__left">
-      {{- /* Please don't remove this attribution as a "Thank You" to the theme maintainers. */}}
-      <p>{{ .Site.Copyright }} | Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/dfrkp/citizens-initiative">Citizens Initiative</a></p>
+      <p>{{ .Site.Copyright }}</p>
+      {{- with .Site.Menus.footer }}
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          {{- range . }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </nav>
+      {{- end }}
     </div>
     <div class="footer__right">
       <button id="dark-mode-button" class="footer__button">
