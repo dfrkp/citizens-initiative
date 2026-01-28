@@ -6,32 +6,34 @@
       <div class="banner__brand">
         <a href="/" title="{{ .Site.Params.brand.title }} Home">
           <span class="banner__name banner__name--long">
-            {{- if .Site.Params.brand.logo }}
-            <img src="{{ .Site.Params.brand.logo | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--light">
-            {{- if .Site.Params.brand.logoDark }}
-            <img src="{{ .Site.Params.brand.logoDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--dark">
+            {{- with .Site.Params.brand.logo }}
+            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--light">
+            {{- with $.Site.Params.brand.logoDark }}
+            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--dark">
             {{- end }}
             {{- else }}
             {{ .Site.Params.brand.name | default .Site.Title }}
             {{- end }}
           </span>
           <span class="banner__name banner__name--short">
-            {{- if or .Site.Params.brand.logoShort .Site.Params.brand.logo }}
-            {{- $logoShort := .Site.Params.brand.logoShort | default .Site.Params.brand.logo }}
-            {{- $logoShortDark := .Site.Params.brand.logoShortDark | default .Site.Params.brand.logoDark | default $logoShort }}
+            {{- $logo := .Site.Params.brand.logo }}
+            {{- $logoShort := .Site.Params.brand.logoShort | default $logo }}
+            {{- $logoDark := .Site.Params.brand.logoDark }}
+            {{- $logoShortDark := .Site.Params.brand.logoShortDark | default $logoDark | default $logoShort }}
+            {{- if $logoShort }}
             <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--light">
-            {{- if ne $logoShortDark $logoShort }}
+            {{- if and $logoShortDark (ne $logoShortDark $logoShort) }}
             <img src="{{ $logoShortDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark">
             {{- end }}
             {{- else if .Site.Params.brand.nameShort }}
-            {{ .Site.Params.brand.nameShort | default .Site.Title }}
+            {{ .Site.Params.brand.nameShort }}
             {{- else }}
             {{ $words := split (.Site.Params.brand.name | default .Site.Title) " " }}
             {{ range $words }}{{ substr . 0 1 }}{{ end }}
             {{- end }}
           </span>
         </a>
-        {{- if not .Site.Params.brand.logo }}
+        {{- if and (not .Site.Params.brand.logo) .Site.Params.brand.tagline }}
         <p class="banner__tagline">{{ .Site.Params.brand.tagline }}</p>
         {{- end }}
       </div>
