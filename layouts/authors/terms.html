@@ -4,7 +4,7 @@
     {{- $authorPage := site.GetPage "authors" (urlize .Title) }}
     {{- $image := (partial "function/author-image" (dict "author" .Title "size" "500x500 center")) }} 
     <figure class="card__cover">
-        <a href="{{ .Permalink }}"><img src="{{ $image.thumbnail }}" alt="{{ .Title }}'s Headshot" height="500px"></a>
+        <a href="{{ .RelPermalink }}"><img src="{{ $image.thumbnail }}" alt="{{ .Title }}'s Headshot"></a>
     </figure>
     <div class="card__content">
         <div class="card__header">

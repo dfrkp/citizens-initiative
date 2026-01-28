@@ -74,7 +74,7 @@
       }
       
       // detect reduced motion preference
-      if (window.matchMedia("(preferes-reduced-animations)").matches && !localStorage.getItem("animations") === "on") {
+      if (window.matchMedia("(prefers-reduced-motion)").matches && localStorage.getItem("animations") !== "on") {
         document.documentElement.setAttribute("data-animations", "off");
         localStorage.setItem("animations", "off");
       } else {
