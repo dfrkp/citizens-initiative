@@ -130,6 +130,8 @@
     }
 
     &__series {
+        position: relative;
+        z-index: 2;
         font-weight: bold;
         color: var(--color-primary);
         margin-bottom: typeScale(2, down);
@@ -141,6 +143,15 @@
         margin: 0;
         line-height: 1;
         word-break: break-word;
+
+        a {
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+            }
+        }
     }
 
     &__subtitle {
