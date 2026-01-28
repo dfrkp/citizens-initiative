@@ -7,9 +7,9 @@
         <a href="/" title="{{ .Site.Params.brand.title }} Home">
           <span class="banner__name banner__name--long">
             {{- if .Site.Params.brand.logo }}
-            <img src="{{ .Site.Params.brand.logo }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--light">
+            <img src="{{ .Site.Params.brand.logo | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--light">
             {{- if .Site.Params.brand.logoDark }}
-            <img src="{{ .Site.Params.brand.logoDark }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--dark">
+            <img src="{{ .Site.Params.brand.logoDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--dark">
             {{- end }}
             {{- else }}
             {{ .Site.Params.brand.name | default .Site.Title }}
@@ -19,9 +19,9 @@
             {{- if or .Site.Params.brand.logoShort .Site.Params.brand.logo }}
             {{- $logoShort := .Site.Params.brand.logoShort | default .Site.Params.brand.logo }}
             {{- $logoShortDark := .Site.Params.brand.logoShortDark | default .Site.Params.brand.logoDark | default $logoShort }}
-            <img src="{{ $logoShort }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--light">
+            <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--light">
             {{- if ne $logoShortDark $logoShort }}
-            <img src="{{ $logoShortDark }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark">
+            <img src="{{ $logoShortDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark">
             {{- end }}
             {{- else if .Site.Params.brand.nameShort }}
             {{ .Site.Params.brand.nameShort | default .Site.Title }}
