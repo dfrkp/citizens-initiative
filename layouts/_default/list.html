@@ -8,7 +8,7 @@
                 {{ .Scratch.Set "size" "x1000" }}
                 {{ $thumbnail := partialCached "function/resize-image" . .Page }}
                 <figure class="card__cover">
-                    <a href="{{ .RelPermalink }}"><img src="{{ $thumbnail }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}" height="500px"></a>
+                    <a href="{{ .RelPermalink }}"><img src="{{ $thumbnail }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}"></a>
                 </figure>
             {{- end }}
             <div class="card__content">

@@ -84,6 +84,22 @@
             &--short {
                 max-height: 2rem;
             }
+
+            &--light {
+                display: block;
+
+                [data-dark-mode="on"] & {
+                    display: none;
+                }
+            }
+
+            &--dark {
+                display: none;
+
+                [data-dark-mode="on"] & {
+                    display: block;
+                }
+            }
         }
     }
 

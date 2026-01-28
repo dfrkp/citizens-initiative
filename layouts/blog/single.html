@@ -5,7 +5,7 @@
     {{ .Scratch.Set "size" "x1300" }}
     {{ $cover := partialCached "function/resize-image" . .Page "single" }}
     <figure class="card__cover">
-        <img src="{{ $cover }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}" height="500px">
+        <img src="{{ $cover }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}">
     </figure>
     {{- end }}
   <div class="card__content">

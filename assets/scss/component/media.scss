@@ -21,11 +21,17 @@ figcaption {
 
 img {
     height: auto;
-    width: 100%;
+    max-width: 100%;
 
     &:not([src*=".svg"]) {
         filter: var(--image-filter);
     }
+}
+
+.card__content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 video {
