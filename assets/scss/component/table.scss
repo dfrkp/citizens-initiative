@@ -10,6 +10,10 @@ table {
     text-align: left;
     white-space: nowrap;
     border-radius: var(--border-radius-small);
+
+    @media (max-width: 40rem) {
+        white-space: normal;
+    }
 }
 
 tbody tr {
@@ -33,11 +37,24 @@ th {
     vertical-align: middle;
     white-space: nowrap;
 
+    @media (max-width: 40rem) {
+        white-space: normal;
+        word-break: break-word;
+    }
+
     &:first-of-type {
         padding-left: 2rem;
+
+        @media (max-width: 40rem) {
+            padding-left: 0.75rem;
+        }
     }
 
     &:last-of-type {
         padding-right: 2rem;
+
+        @media (max-width: 40rem) {
+            padding-right: 0.75rem;
+        }
     }
 }
