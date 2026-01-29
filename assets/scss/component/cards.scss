@@ -5,6 +5,11 @@
     gap: 1.5rem;
     margin: 2rem 0;
 
+    // Reset grid-column for cards inside cards container
+    .card {
+        grid-column: auto;
+    }
+
     &--2-col {
         grid-template-columns: 1fr;
 
