@@ -6,7 +6,7 @@
         </div>
     </section>
     {{- end }}
-    {{ $paginator := .Paginate .Pages.ByTitle }}
+    {{ $paginator := .Paginate .Pages.ByWeight }}
     {{ range $paginator.Pages }}
         <article class="card{{ if not .Params.feature }} card--coverless{{ end }}">
             {{- if .Params.feature }}
