@@ -17,13 +17,17 @@
         <div class="card__icon">{{ . | safeHTML }}</div>
         {{- end }}
         {{- with $title }}
-        <h3 class="card__title">{{ . }}</h3>
+        <h3 class="card__title">
+            {{- with $link }}<a href="{{ . }}">{{ end }}
+            {{- . }}
+            {{- with $link }}</a>{{ end }}
+        </h3>
         {{- end }}
         <div class="card__description">
             {{ $.Inner | markdownify }}
         </div>
         {{- with $link }}
-        <a href="{{ . }}" class="card__link">{{ $linkText }} &rarr;</a>
+        <span class="card__link">{{ $linkText }} &rarr;</span>
         {{- end }}
     </div>
 </article>

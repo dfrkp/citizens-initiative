@@ -270,11 +270,17 @@
     }
 
     &--static {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+
         #{$block}__content--static {
-            margin-top: 0;
+            margin: 0;
+            padding: 1.5rem 1rem;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         #{$block}__icon {
