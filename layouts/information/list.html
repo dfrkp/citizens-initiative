@@ -6,7 +6,17 @@
         </div>
     </section>
     {{- end }}
-    {{ $paginator := .Paginate .Pages.ByWeight }}
+    {{ $sorted := slice }}
+    {{ range .Pages }}
+        {{ $weight := .Params.weight | default 999 }}
+        {{ $sorted = $sorted | append (dict "page" . "weight" $weight "title" .Title) }}
+    {{ end }}
+    {{ $sorted = sort (sort $sorted "title") "weight" }}
+    {{ $pages := slice }}
+    {{ range $sorted }}
+        {{ $pages = $pages | append .page }}
+    {{ end }}
+    {{ $paginator := .Paginate $pages }}
     {{ range $paginator.Pages }}
         <article class="card{{ if not .Params.feature }} card--coverless{{ end }}">
             {{- if .Params.feature }}
