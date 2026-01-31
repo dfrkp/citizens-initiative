@@ -10,9 +10,13 @@
             {{- $hasDark := $.Site.Params.brand.logoDark }}
             {{- $width := $.Site.Params.brand.logoWidth }}
             {{- $height := $.Site.Params.brand.logoHeight }}
-            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo{{ if $hasDark }} brand__logo--light{{ end }}"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}>
+            {{- $aspectStyle := "" }}
+            {{- if and $width $height }}
+              {{- $aspectStyle = printf "aspect-ratio: %v / %v;" $width $height }}
+            {{- end }}
+            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo{{ if $hasDark }} brand__logo--light{{ end }}"{{ with $aspectStyle }} style="{{ . | safeCSS }}"{{ end }}>
             {{- with $.Site.Params.brand.logoDark }}
-            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--dark"{{ with $width }} width="{{ . }}"{{ end }}{{ with $height }} height="{{ . }}"{{ end }}>
+            <img src="{{ . | absURL }}" alt="{{ $.Site.Params.brand.name | default $.Site.Title }}" class="brand__logo brand__logo--dark"{{ with $aspectStyle }} style="{{ . | safeCSS }}"{{ end }}>
             {{- end }}
             {{- else }}
             {{ .Site.Params.brand.name | default .Site.Title }}
@@ -26,10 +30,14 @@
             {{- $hasDarkShort := and $logoShortDark (ne $logoShortDark $logoShort) }}
             {{- $widthShort := .Site.Params.brand.logoShortWidth | default .Site.Params.brand.logoWidth }}
             {{- $heightShort := .Site.Params.brand.logoShortHeight | default .Site.Params.brand.logoHeight }}
+            {{- $aspectStyleShort := "" }}
+            {{- if and $widthShort $heightShort }}
+              {{- $aspectStyleShort = printf "aspect-ratio: %v / %v;" $widthShort $heightShort }}
+            {{- end }}
             {{- if $logoShort }}
-            <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short{{ if $hasDarkShort }} brand__logo--light{{ end }}"{{ with $widthShort }} width="{{ . }}"{{ end }}{{ with $heightShort }} height="{{ . }}"{{ end }}>
+            <img src="{{ $logoShort | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short{{ if $hasDarkShort }} brand__logo--light{{ end }}"{{ with $aspectStyleShort }} style="{{ . | safeCSS }}"{{ end }}>
             {{- if $hasDarkShort }}
-            <img src="{{ $logoShortDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark"{{ with $widthShort }} width="{{ . }}"{{ end }}{{ with $heightShort }} height="{{ . }}"{{ end }}>
+            <img src="{{ $logoShortDark | absURL }}" alt="{{ .Site.Params.brand.name | default .Site.Title }}" class="brand__logo brand__logo--short brand__logo--dark"{{ with $aspectStyleShort }} style="{{ . | safeCSS }}"{{ end }}>
             {{- end }}
             {{- else if .Site.Params.brand.nameShort }}
             {{ .Site.Params.brand.nameShort }}
