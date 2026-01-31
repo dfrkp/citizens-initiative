@@ -10,11 +10,16 @@
     {{ range $paginator.Pages }}
         <article class="card{{ if not .Params.feature }} card--coverless{{ end }}">
             {{- if .Params.feature }}
-                {{ .Scratch.Set "processing" "resize" }}
-                {{ .Scratch.Set "size" "x1000" }}
-                {{ $thumbnail := partialCached "function/resize-image" . .Page }}
+                {{- $alt := .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}
+                {{- $feature := .Params.feature }}
                 <figure class="card__cover">
-                    <a href="{{ .RelPermalink }}"><img src="{{ $thumbnail }}" alt="{{ .Params.featureAlt | default .Params.featureCaption | default "A Decorative Image" }}"></a>
+                    <a href="{{ .RelPermalink }}">
+                    {{- with .Resources.GetMatch .Params.feature }}
+                        {{- partial "function/responsive-image" (dict "image" . "alt" $alt "widths" (slice 400 600 900 1200)) }}
+                    {{- else }}
+                        <img src="{{ $feature }}" alt="{{ $alt }}">
+                    {{- end }}
+                    </a>
                 </figure>
             {{- end }}
             <div class="card__content">

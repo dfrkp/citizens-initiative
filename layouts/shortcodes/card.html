@@ -2,14 +2,32 @@
 {{- $link := .Get "link" }}
 {{- $linkText := .Get "linkText" | default (i18n "learn_more") }}
 {{- $icon := .Get "icon" }}
-{{- $image := .Get "image" }}
+{{- $imagePath := .Get "image" }}
 {{- $imageAlt := .Get "imageAlt" | default $title }}
 {{- $class := .Get "class" | default "" }}
 
 <article class="card card--static {{ $class }}">
-    {{- with $image }}
+    {{- with $imagePath }}
     <figure class="card__cover">
-        <img src="{{ . }}" alt="{{ $imageAlt }}">
+        {{- $processed := false }}
+        {{- $imageResource := false }}
+        {{- /* Try page resources first */ -}}
+        {{- with $.Page.Resources.GetMatch . }}
+            {{- $imageResource = . }}
+            {{- $processed = true }}
+        {{- end }}
+        {{- /* Try global resources (assets) */ -}}
+        {{- if not $processed }}
+            {{- with resources.Get . }}
+                {{- $imageResource = . }}
+                {{- $processed = true }}
+            {{- end }}
+        {{- end }}
+        {{- if $processed }}
+            {{- partial "function/responsive-image" (dict "image" $imageResource "alt" $imageAlt "widths" (slice 400 600 900)) }}
+        {{- else }}
+            <img src="{{ . }}" alt="{{ $imageAlt }}">
+        {{- end }}
     </figure>
     {{- end }}
     <div class="card__content card__content--static">

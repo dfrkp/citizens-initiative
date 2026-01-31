@@ -1,0 +1,66 @@
+{{- /*
+    Generates a responsive <picture> element with WebP and srcset.
+
+    Usage:
+      {{ partial "function/responsive-image" (dict "image" $image "alt" "Description" "sizes" "(max-width: 900px) 100vw, 900px") }}
+
+    Parameters:
+      - image: Hugo image resource (required)
+      - alt: Alt text (optional, defaults to "A Decorative Image")
+      - sizes: sizes attribute (optional, defaults to "(max-width: 900px) 100vw, 900px")
+      - widths: slice of widths to generate (optional, defaults to 400, 600, 900, 1200)
+      - class: CSS class for img element (optional)
+      - loading: loading attribute (optional, defaults to "lazy")
+*/ -}}
+
+{{- $image := .image }}
+{{- $alt := .alt | default "A Decorative Image" }}
+{{- $sizes := .sizes | default "(max-width: 900px) 100vw, 900px" }}
+{{- $widths := .widths | default (slice 400 600 900 1200) }}
+{{- $class := .class | default "" }}
+{{- $loading := .loading | default "lazy" }}
+
+{{- $srcsetWebP := slice }}
+{{- $srcsetOrig := slice }}
+{{- $fallbackSrc := $image.RelPermalink }}
+{{- $fallbackWidth := $image.Width }}
+
+{{- range $widths }}
+  {{- if ge $image.Width . }}
+    {{- $resized := $image.Resize (printf "%dx" .) }}
+    {{- $webp := $image.Resize (printf "%dx webp" .) }}
+    {{- $srcsetWebP = $srcsetWebP | append (printf "%s %dw" $webp.RelPermalink .) }}
+    {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $resized.RelPermalink .) }}
+    {{- $fallbackSrc = $resized.RelPermalink }}
+    {{- $fallbackWidth = . }}
+  {{- end }}
+{{- end }}
+
+{{- /* Add original size if larger than biggest breakpoint */ -}}
+{{- $maxWidth := index $widths (sub (len $widths) 1) }}
+{{- if gt $image.Width $maxWidth }}
+  {{- $webp := $image.Process "webp" }}
+  {{- $srcsetWebP = $srcsetWebP | append (printf "%s %dw" $webp.RelPermalink $image.Width) }}
+  {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+{{- end }}
+
+<picture>
+  {{- if gt (len $srcsetWebP) 0 }}
+  <source
+    type="image/webp"
+    srcset="{{ delimit $srcsetWebP ", " }}"
+    sizes="{{ $sizes }}">
+  {{- end }}
+  {{- if gt (len $srcsetOrig) 0 }}
+  <source
+    srcset="{{ delimit $srcsetOrig ", " }}"
+    sizes="{{ $sizes }}">
+  {{- end }}
+  <img
+    loading="{{ $loading }}"
+    src="{{ $fallbackSrc }}"
+    alt="{{ $alt }}"
+    {{- with $class }} class="{{ . }}"{{ end }}
+    width="{{ $fallbackWidth }}"
+    height="{{ math.Round (mul (div (float $fallbackWidth) $image.Width) $image.Height) }}">
+</picture>
