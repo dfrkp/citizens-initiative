@@ -1,12 +1,19 @@
 <!--
     Replaces default markup for markdown image.
     ![text](src)
+
+    Features:
+    - Responsive images with srcset (400w, 600w, 900w, 1200w)
+    - WebP conversion with original format fallback
+    - Lazy loading
+    - Lightbox link to full resolution
 -->
 
-{{- $imageFile := slice "jpg" "png" "gif" }}
+{{- $imageFile := slice "jpg" "jpeg" "png" "gif" "webp" }}
 {{- $audioFile := slice "mp3" "wav" }}
 {{- $videoFile := slice "mp4" "webm" }}
-{{- $ext := trim (path.Ext .Destination) "." }}
+{{- $ext := lower (trim (path.Ext .Destination) ".") }}
+{{- $sizes := slice 400 600 900 1200 }}
 
 <figure>
   {{- if in $audioFile $ext }}
@@ -24,21 +31,70 @@
     </video>
   {{- else }}
     {{- $image := .Destination }}
-    {{- $thumbnail := $image }}
+    {{- $isProcessable := false }}
+    {{- $altText := .Text | default "A Decorative Image" }}
+
     {{- if not (in .Destination "http") }}
-      {{- with .Page.Resources.GetMatch .Destination }}
+      {{- $path := .Destination }}
+      {{- $path = strings.TrimPrefix "./" $path }}
+      {{- with .Page.Resources.GetMatch $path }}
         {{- $image = . }}
-        {{- if gt $image.Width 900 }}
-          {{- $thumbnail = ($image.Resize "900x").RelPermalink -}}
-        {{- end }}
-      {{- else }}
-        {{- $image = .Destination }}
-        {{- $thumbnail = $image }}
+        {{- $isProcessable = true }}
       {{- end }}
     {{- end }}
-    <a href="{{ $image }}" target="citizens-initiative-image">
-      <img loading="lazy" src="{{ $thumbnail }}" alt="{{ .Text | default "A Decorative Image" }}">
-    </a>
+
+    {{- if $isProcessable }}
+      {{- /* Build srcset for WebP and original format */ -}}
+      {{- $srcsetWebP := slice }}
+      {{- $srcsetOrig := slice }}
+      {{- $fallbackSrc := $image.RelPermalink }}
+      {{- $fallbackWidth := $image.Width }}
+
+      {{- range $sizes }}
+        {{- if ge $image.Width . }}
+          {{- $resized := $image.Resize (printf "%dx" .) }}
+          {{- $webp := $image.Resize (printf "%dx webp" .) }}
+          {{- $srcsetWebP = $srcsetWebP | append (printf "%s %dw" $webp.RelPermalink .) }}
+          {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $resized.RelPermalink .) }}
+          {{- $fallbackSrc = $resized.RelPermalink }}
+          {{- $fallbackWidth = . }}
+        {{- end }}
+      {{- end }}
+
+      {{- /* Add original size if larger than biggest breakpoint */ -}}
+      {{- if gt $image.Width (index $sizes (sub (len $sizes) 1)) }}
+        {{- $webp := $image.Process "webp" }}
+        {{- $srcsetWebP = $srcsetWebP | append (printf "%s %dw" $webp.RelPermalink $image.Width) }}
+        {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+      {{- end }}
+
+      <a href="{{ $image.RelPermalink }}" target="citizens-initiative-image">
+        <picture>
+          {{- if gt (len $srcsetWebP) 0 }}
+          <source
+            type="image/webp"
+            srcset="{{ delimit $srcsetWebP ", " }}"
+            sizes="(max-width: 900px) 100vw, 900px">
+          {{- end }}
+          {{- if gt (len $srcsetOrig) 0 }}
+          <source
+            srcset="{{ delimit $srcsetOrig ", " }}"
+            sizes="(max-width: 900px) 100vw, 900px">
+          {{- end }}
+          <img
+            loading="lazy"
+            src="{{ $fallbackSrc }}"
+            alt="{{ $altText }}"
+            width="{{ $fallbackWidth }}"
+            height="{{ math.Round (mul (div (float $fallbackWidth) $image.Width) $image.Height) }}">
+        </picture>
+      </a>
+    {{- else }}
+      {{- /* External or non-processable image - render as-is */ -}}
+      <a href="{{ $image }}" target="citizens-initiative-image">
+        <img loading="lazy" src="{{ $image }}" alt="{{ $altText }}">
+      </a>
+    {{- end }}
   {{- end }}
   {{ with .Text }}<figcaption class="text-small">{{ . | safeHTML }}</figcaption>{{ end }}
 </figure>
