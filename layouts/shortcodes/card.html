@@ -16,9 +16,10 @@
             {{- $imageResource = . }}
             {{- $processed = true }}
         {{- end }}
-        {{- /* Try global resources (assets) */ -}}
+        {{- /* Try global resources (assets) - strip leading slash */ -}}
         {{- if not $processed }}
-            {{- with resources.Get . }}
+            {{- $assetPath := strings.TrimPrefix "/" $imagePath }}
+            {{- with resources.Get $assetPath }}
                 {{- $imageResource = . }}
                 {{- $processed = true }}
             {{- end }}
