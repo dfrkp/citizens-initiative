@@ -4,5 +4,6 @@
     "vars" site.Params.style
 }}
 {{ with resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "scss/main.scss" . | toCSS $options }}
-  <link rel="stylesheet" href="{{ .RelPermalink }}">
+  <link rel="preload" href="{{ .RelPermalink }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
 {{ end }}
